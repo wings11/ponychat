@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FaTelegramPlane, FaUserShield } from 'react-icons/fa';
-import { supabase } from '../supabaseClient';
+import { supabase } from '../supabaseClient.ts';
 import { Card } from '../components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
 import { Textarea } from '../components/ui/textarea';

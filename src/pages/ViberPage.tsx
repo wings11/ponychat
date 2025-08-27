@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { FaCommentDots } from 'react-icons/fa';
-import { supabase } from '../supabaseClient';
+import { useEffect, useState, useRef } from 'react';
+import { supabase } from '../supabaseClient.ts';
 import { Card } from '../components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
 import { Textarea } from '../components/ui/textarea';
@@ -102,16 +101,4 @@ export default function ViberPage() {
     </div>
   );
 }
-import { Link } from 'react-router-dom';
-
-export default function ViberPage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="max-w-md w-full bg-white rounded-lg shadow p-6 text-center">
-        <h1 className="text-2xl font-bold mb-2 text-purple-600">Viber Chats</h1>
-        <p className="text-sm text-gray-600 mb-4">This is a placeholder for Viber chat management.</p>
-        <Link to="/" className="text-sm text-blue-600 underline">Back</Link>
-      </div>
-    </div>
-  );
-}
+// ...existing code above... (placeholder removed to avoid duplicate export)

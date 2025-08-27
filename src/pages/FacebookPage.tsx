@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { FaFacebook } from 'react-icons/fa';
-import { supabase } from '../supabaseClient';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { supabase } from '../supabaseClient.ts';
 // Card removed - not used by new compact message UI
 import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar';
 import { Textarea } from '../components/ui/textarea';
@@ -36,7 +35,7 @@ export default function FacebookPage() {
     } catch { return new Date(0); }
   }
 
-  const fetchUnreadCounts = React.useCallback(async () => {
+  const fetchUnreadCounts = useCallback(async () => {
     try {
       const res = await fetch(`${BACKEND}/facebook/unread-count`);
       if (!res.ok) return;
@@ -45,7 +44,7 @@ export default function FacebookPage() {
     } catch (err) { console.error(err); }
   }, [BACKEND]);
 
-  const fetchMessages = React.useCallback(async () => {
+  const fetchMessages = useCallback(async () => {
     setLoading(true);
     const { data, error } = await supabase
       .from('pony_messages')
@@ -158,7 +157,7 @@ export default function FacebookPage() {
                           {/* timestamp - only visible when message is expanded */}
                           {isExpanded && (
                             <div className={`mt-1 text-[11px] text-gray-400 ${isAdmin ? 'text-right' : 'text-left'}`}>
-                              {new Date(m.created_at).toLocaleString()}
+                              {parseDateSafe(m.created_at).toLocaleString()}
                             </div>
                           )}
                         </div>
